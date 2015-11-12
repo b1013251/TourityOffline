@@ -22,7 +22,8 @@ class BubbleScene : SKScene , SKPhysicsContactDelegate, SocketDelegate  {
         POI(post_id: 0, latitude: 40.0003, longitude: 130.0310, altitude: 10.0, message: "やああああ", file_path: "tmp/sample.jpg", posted_time: "debug"),
         POI(post_id: 0, latitude: 40.0035, longitude: 129.9989, altitude: 5.0, message: "とてもきれい", file_path: "tmp/sample.jpg", posted_time: "debug"),
         POI(post_id: 0, latitude: 39.9999, longitude: 129.9399, altitude: 8.0, message: "アカデミックリンク", file_path: "tmp/sample.jpg", posted_time: "debug"),
-        POI(post_id: 0, latitude: 39.9999, longitude: 130.0002, altitude: 18.0, message: "はこだて", file_path: "tmp/sample.jpg", posted_time: "debug")
+        POI(post_id: 0, latitude: 39.998, longitude: 130.0002, altitude: 18.0, message: "はこだて", file_path: "tmp/sample.jpg", posted_time: "debug")
+        //POI(post_id: 0, latitude: 40.002, longitude: 130.0000, altitude: 18.0, message: "未来大学", file_path: "tmp/sample.jpg", posted_time: "debug")
     ]
     
     
@@ -78,7 +79,7 @@ class BubbleScene : SKScene , SKPhysicsContactDelegate, SocketDelegate  {
         println("補正後 \(realHeading)" )
         */
         
-        println("\(sensor.pitch) \(sensor.yaw) \(sensor.roll) \(sensor.heading)")
+        //println("\(sensor.pitch) \(sensor.yaw) \(sensor.roll) \(sensor.heading)")
         
         for ( var i = 0 ; i < posPOI.count ; i++ ) {
             let place : Double = ( ARHelper.isExist(viewPOI: viewPOI, posPOI: posPOI[i] , heading: realHeading) )

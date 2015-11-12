@@ -20,13 +20,14 @@ class ARHelper {
         
         let angle = getAngle(viewLat: viewPOI.latitude, viewLon: viewPOI.longitude
             , posLat: posPOI.latitude , posLon: posPOI.longitude)
-        let trueHeading = degToRad(fmod(heading,360.0))
+        let trueHeading = degToRad(heading)
         var target_azimuth = trueHeading - angle
         
         
         if target_azimuth < VIEW_ANGLE && (-VIEW_ANGLE) < target_azimuth {
             //println(" exist \( radToDeg(target_azimuth) )")
-            return radToDeg(target_azimuth)
+            println(target_azimuth)
+            return radToDeg(getRegularRad(target_azimuth))
         } else {
             //println("")
             return NOT_EXIST
@@ -47,6 +48,14 @@ class ARHelper {
         return angle
     }
     
+    class func getRegularRad(rad :Double) -> Double {
+        if rad < M_PI {
+            return rad
+        } else {
+            return rad - 2 * M_PI
+        }
+    }
+    
     
     
     // プライベート関数
@@ -57,10 +66,11 @@ class ARHelper {
         let azimuth = (M_PI * 0.5) - atan(latDiff / lonDiff)
         
         if lonDiff > 0 {
+            
             return azimuth
         } else if lonDiff < 0 {
             return azimuth + M_PI
-        } else if latDiff < 0 {
+        } else if latDiff < 0 { //lon == 0 で上むきなら180
             return M_PI
         }
         
